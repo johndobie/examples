@@ -3,6 +3,11 @@ package com.dbc.framework;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -72,10 +77,7 @@ public class SeleniumHelper {
 	public static void waitPopup(WebDriver driver, String fieldName)
 	{
 		new WebDriverWait(driver, WAIT_INTERVAL).until(waitForPopup(driver, fieldName));
-	}
-	
-
-	
+	}	
 	
 	public static void waitForXpathElement(WebDriver driver, String xpath)
 	{
@@ -87,6 +89,31 @@ public class SeleniumHelper {
 	{
 		long value = new Long(driver.findElement(By.id(id)).getAttribute("value"));
 		return value;
+	}
+	
+	
+	public static RemoteWebDriver getWebDriver(String driverType)
+	{
+		if (driverType.equals("firefox"))
+		{
+			return getFirefoxDriver();
+		}
+		return new ChromeDriver();
+			
+	}
+
+	public static RemoteWebDriver getChromeDriver()
+	{
+		FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
+		RemoteWebDriver driver = new FirefoxDriver(profile);
+		return driver;		
+	}
+	
+	public static RemoteWebDriver getFirefoxDriver()
+	{
+		FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
+		RemoteWebDriver driver = new FirefoxDriver(profile);
+		return driver;		
 	}
 }
 	
