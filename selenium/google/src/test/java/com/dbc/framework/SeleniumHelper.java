@@ -98,15 +98,13 @@ public class SeleniumHelper {
 		{
 			return getFirefoxDriver();
 		}
-		return new ChromeDriver();
+		return getChromeDriver();
 			
 	}
 
 	public static RemoteWebDriver getChromeDriver()
 	{
-		FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
-		RemoteWebDriver driver = new FirefoxDriver(profile);
-		return driver;		
+		return new ChromeDriver();		
 	}
 	
 	public static RemoteWebDriver getFirefoxDriver()
