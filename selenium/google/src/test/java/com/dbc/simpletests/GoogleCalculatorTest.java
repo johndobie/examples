@@ -12,9 +12,10 @@ import com.dbc.framework.BaseSeleniumTest;
 
 public class GoogleCalculatorTest extends BaseSeleniumTest{
 	
-	private static String SEARCH_RESULTS = "//div[@id='resultStats']";
-	private static String SEARCH_BOX = "q";
-	private static String SEARCH_BUTTON = "btnG";
+	private static final String RESULT = "//span[@id='cwos']";
+	private static final String SEARCH_RESULTS = "//div[@id='resultStats']";
+	private static final String SEARCH_BOX = "q";
+	private static final String SEARCH_BUTTON = "btnG";
 	
 	@Before
 	public void getPage()
@@ -34,7 +35,7 @@ public class GoogleCalculatorTest extends BaseSeleniumTest{
 				
 		waitForXpathElement(driver, SEARCH_RESULTS);
 		
-		String calculatorField = driver.findElementByXPath("//span[@id='cwos']").getText();
+		String calculatorField = driver.findElementByXPath(RESULT).getText();
 		assertThat(calculatorField).isEqualTo("200");
 	}
 }

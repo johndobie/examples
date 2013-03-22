@@ -1,5 +1,6 @@
 package com.dbc.simpletests;
 
+import static com.dbc.framework.SeleniumHelper.waitForXpathElement;
 import static org.fest.assertions.Assertions.assertThat;
 
 import org.junit.Before;
@@ -13,6 +14,7 @@ public class ScientificCalculatorTest extends BaseSeleniumTest{
 	
 	private static String CALCULATOR_FIELD = "input";
 	private static String SEARCH_BUTTON = "ButtonCalc";
+	private static String RESULT_FIELD = "//td[@class='result']";
 	
 	@Before
 	public void getPage()
@@ -29,9 +31,10 @@ public class ScientificCalculatorTest extends BaseSeleniumTest{
 		
 		WebElement searchButton = driver.findElement(By.id(SEARCH_BUTTON));
 		searchButton.click();		 
+			
+		waitForXpathElement(driver, RESULT_FIELD);
 		
-		searchBox = driver.findElement(By.xpath("//td[@class='result']"));
-		String calculation = searchBox.getText();
-		assertThat(calculation).isEqualTo("200");
+		String result = driver.findElement(By.xpath(RESULT_FIELD)).getText();
+		assertThat(result).isEqualTo("200");
 	}
 }
