@@ -11,6 +11,8 @@ import com.dbc.framework.IconSeleniumTest;
 
 public class LoginTest extends IconSeleniumTest{
 	
+	private static String SEARCH_RESULTS = "//div[@id='resultStats']";
+	
 	@Before
 	public void getPage()
 	{
@@ -19,15 +21,15 @@ public class LoginTest extends IconSeleniumTest{
 	}
 		
 	@Test
-	public void sealSearch() throws Exception {
+	public void googleSearch() throws Exception {
 		
 		WebElement searchBox = driver.findElement(By.name("q"));
 		searchBox.sendKeys("John Dobie");
 		
 		WebElement searchButton = driver.findElement(By.name("btnG"));
 		searchButton.click();		 		
-		
-		WebElement results = driver.findElement(By. xpath("//div[@id='resultStats']"));
+				
+		waitToAppear(driver, SEARCH_RESULTS);
 				
 	}
 }

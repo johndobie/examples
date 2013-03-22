@@ -22,13 +22,13 @@ public class SeleniumHelper {
 	}
 	
 	
-	private static ExpectedCondition<Boolean> toAppear(WebDriver driver, final String fieldName) 
+	private static ExpectedCondition<Boolean> toAppear(WebDriver driver, final String xpath) 
 	{
 		return new ExpectedCondition<Boolean>() 
 		{
 			public Boolean apply(WebDriver driver) {
-				String text = driver.findElement(By.id(fieldName)).getAttribute("value");
-				return text != null;
+				WebElement element = driver.findElement(By.xpath((xpath)));
+				return element != null;
 			}
 		};
 	}
