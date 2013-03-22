@@ -1,4 +1,4 @@
-package com.dbc;
+package com.dbc.simpletests;
 
 import static com.dbc.framework.SeleniumHelper.waitForXpathElement;
 
