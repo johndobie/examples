@@ -12,16 +12,17 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
 public abstract class BaseSeleniumTest {
 
 	protected static String baseUrl = "http://google.com";	
+	protected static FirefoxProfile profile;
 	protected static FirefoxDriver driver;
-	protected static FirefoxProfile profile = new ProfilesIni().getProfile("selenium");
 	protected static Logger logger = Logger.getLogger(BaseSeleniumTest.class);
 		
 	@BeforeClass
 	public static void openBrowser()
 	{
 		getCommandLineProperties();
-		logger.info("Base URL : " + baseUrl);
+		profile = new ProfilesIni().getProfile("selenium");
 		driver = new FirefoxDriver(profile);
+		logger.info("Base URL : " + baseUrl);		
 	}
 	
 	private static void getCommandLineProperties() {
