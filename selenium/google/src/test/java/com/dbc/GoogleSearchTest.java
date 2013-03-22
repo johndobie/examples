@@ -1,15 +1,15 @@
 package com.dbc;
 
-import static com.dbc.framework.SeleniumHelper.waitToAppear;
+import static com.dbc.framework.SeleniumHelper.waitForXpathElement;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.dbc.framework.IconSeleniumTest;
+import com.dbc.framework.BaseSeleniumTest;
 
-public class LoginTest extends IconSeleniumTest{
+public class GoogleSearchTest extends BaseSeleniumTest{
 	
 	private static String SEARCH_RESULTS = "//div[@id='resultStats']";
 	
@@ -29,7 +29,7 @@ public class LoginTest extends IconSeleniumTest{
 		WebElement searchButton = driver.findElement(By.name("btnG"));
 		searchButton.click();		 		
 				
-		waitToAppear(driver, SEARCH_RESULTS);
+		waitForXpathElement(driver, SEARCH_RESULTS);
 				
 	}
 }

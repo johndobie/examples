@@ -22,7 +22,7 @@ public class SeleniumHelper {
 	}
 	
 	
-	private static ExpectedCondition<Boolean> toAppear(WebDriver driver, final String xpath) 
+	private static ExpectedCondition<Boolean> waitForXpath(WebDriver driver, final String xpath) 
 	{
 		return new ExpectedCondition<Boolean>() 
 		{
@@ -75,9 +75,11 @@ public class SeleniumHelper {
 	}
 	
 
-	public static void waitToAppear(WebDriver driver, String fieldName)
+	
+	
+	public static void waitForXpathElement(WebDriver driver, String xpath)
 	{
-		new WebDriverWait(driver, WAIT_INTERVAL).until(toAppear(driver, fieldName));
+		new WebDriverWait(driver, WAIT_INTERVAL).until(waitForXpath(driver, xpath));
 	}
 
 	
